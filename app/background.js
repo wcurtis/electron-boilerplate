@@ -11,6 +11,15 @@ import windowStateKeeper from './vendor/electron_boilerplate/window_state';
 // in config/env_xxx.json file.
 import env from './env';
 
+/**
+ * Auto updater
+ * https://github.com/GitbookIO/nuts#auto-updater--squirrel
+ */
+var autoUpdater = require('auto-updater');
+var platform = os.platform() + '_' + os.arch();
+var version = app.getVersion();
+autoUpdater.setFeedUrl('http://local-download.officegong.com:6002/update/'+platform+'/'+version);
+
 var mainWindow;
 
 // Preserver of the window size and position between app launches.
